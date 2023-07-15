@@ -18,5 +18,8 @@ public interface IHotelRepo {
 	public List<Hotel> seleccionarOuterFullJoin();
 	
 	public List<Hotel> seleccionarWhereJoin();
+	
+	public List<Hotel> seleccionarJoinFetch();
+	 public void insertar(Hotel hotel);
 
 }

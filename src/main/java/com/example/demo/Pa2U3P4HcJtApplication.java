@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,58 +28,61 @@ private IHotelService hotelService;
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 	
-		System.out.println("---RIGHT----");
-		List<Hotel> hoteles= 	hotelService.buscarOuterRightJoin();
+		System.err.println("---INNER JOIN----");
+		List<Hotel> hoteles= hotelService.buscarInnerJoin();
 		
 		for (Hotel hotel : hoteles) {
-			System.out.println(hotel);
+			System.out.println(hotel.getNombre());
+			System.out.println("Tiene las siguiente habitaciones");
+			
+			for (Habitacion ha : hotel.getHabitaciones()) {
+				System.out.println(ha.getNumero());
+				
+			}
+			
 		}
 		
 		
 		
-		
-		System.out.println("---LEFT----");
-		List<Hotel> hoteles1= 	hotelService.buscarOuterLeftJoin();
+		System.err.println("---SQl Join Fetch ---  ");
+		List<Hotel> hoteles1= 	hotelService.buscarJoinFetch();
 		
 		for (Hotel hotel : hoteles1) {
-			System.out.println(hotel);
+			System.out.println(hotel.getNombre());
+			System.out.println("Tiene las siguiente habitaciones");
+			
+			for (Habitacion ha : hotel.getHabitaciones()) {
+				System.out.println(ha.getNumero());
+				
+			}
+			
 		}
 		
 		
-		System.out.println("---LEFT----");
-		List<Habitacion> habitaciones = this.hotelService.seleccionarHabitacionOuterLeftJoin();
-		 for (Habitacion habitacion : habitaciones) {
-			System.out.println(habitacion);
-		}
-		 
-		 System.out.println("-----FULL JOIN-----");
-		 List<Hotel> hot = this.hotelService.buscarOuterFullJoin();
+		
+		
+		Hotel hotel= new Hotel();
+		Habitacion habitacion= new Habitacion();
+		
+		
+		
+		
+		
+		List<Habitacion> habitaciones=new ArrayList<>();
+		habitaciones.add(habitacion);
+		habitacion.setNumero("MX1");
+		habitacion.setValor(new BigDecimal(200));
+		
+		
+		hotel.setDireccion("AV.123");
+		hotel.setNombre("Mexico");
+		hotel.setHabitaciones(habitaciones);
+		
+		hotelService.guardar(hotel);
+		
+		
+		
 	
-		for (Hotel hotel : hot) 
-			if(hotel==null) {
-				System.err.println("no existe aun un hotel");
-			
-			}else {
-				System.out.println(hotel.getNombre());
-			}
-		
-		
-		
-		 System.out.println("-----WHERE JOIN-----");
-		 List<Hotel> hott = this.hotelService.buscarWhereJoin();
-	
-		for (Hotel hotel : hott) 
-			if(hotel==null) {
-				System.err.println("no existe aun un hotel");
-			
-			}else {
-				System.out.println(hotel);
-			}
-		
-		
-		
-		
-		
 		
 		
 			}

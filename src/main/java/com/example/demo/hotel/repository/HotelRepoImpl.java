@@ -28,7 +28,13 @@ public class HotelRepoImpl implements IHotelRepo{
 		// "on h.hote_id = ha.habi_id_hotel
 		TypedQuery<Hotel> query= this.entityManager.createQuery("SELECT h FROM Hotel h INNER JOIN  h.habitaciones ha", Hotel.class);
 		//hago referencia a donde tengo mi relacion
-		return query.getResultList();
+		List<Hotel> ListaHoteles= query.getResultList();
+		for (Hotel hotel : ListaHoteles) {
+			hotel.getHabitaciones().size();//le soy la señal para que me traiga los hoteles con todas sus referencias
+		}
+		
+		
+		return ListaHoteles ;
 	}
 
 	@Override
@@ -75,9 +81,24 @@ public class HotelRepoImpl implements IHotelRepo{
 		//hago referencia a donde tengo mi relacion
 		return query.getResultList();
 	}
+
+	@Override
+	public List<Hotel> seleccionarJoinFetch() {
+		// TODO Auto-generated method stub
+		TypedQuery<Hotel> query= this.entityManager.createQuery("SELECT h FROM Hotel h  JOIN FETCH  h.habitaciones ha", Hotel.class);
+		
+		return query.getResultList() ;
+	}
+
+	@Override
+	public void insertar(Hotel hotel) {
+		// TODO Auto-generated method stub
+		this.entityManager.persist(hotel);
+	}
+	}
 	
 	
 
 	
 	
-}
+

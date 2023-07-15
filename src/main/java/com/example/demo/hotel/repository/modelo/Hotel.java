@@ -29,7 +29,7 @@ public class Hotel {
 	private String direccion;
 	
 	
-	@OneToMany(mappedBy = "hotel", fetch =  FetchType.EAGER)
+	@OneToMany(mappedBy = "hotel", fetch =  FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Habitacion> habitaciones;
 
 
