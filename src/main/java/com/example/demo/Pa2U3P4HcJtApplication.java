@@ -9,16 +9,21 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.hotel.repository.modelo.CuentaBancaria;
 import com.example.demo.hotel.repository.modelo.Habitacion;
 import com.example.demo.hotel.repository.modelo.Hotel;
+import com.example.demo.hotel.repository.modelo.Transferencia;
+import com.example.demo.hotel.service.ICuentaBancariaService;
 import com.example.demo.hotel.service.IHotelService;
+import com.example.demo.hotel.service.ITransferenciaService;
 
 @SpringBootApplication
 public class Pa2U3P4HcJtApplication implements CommandLineRunner {
 
 @Autowired
-private IHotelService hotelService;
-	
+private ITransferenciaService iTransferenciaService;
+@Autowired
+private ICuentaBancariaService bancariaService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U3P4HcJtApplication.class, args);
@@ -27,7 +32,7 @@ private IHotelService hotelService;
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-	
+	/*
 		System.err.println("---INNER JOIN----");
 		List<Hotel> hoteles= hotelService.buscarInnerJoin();
 		
@@ -80,9 +85,29 @@ private IHotelService hotelService;
 		
 		hotelService.guardar(hotel);
 		
+		*/
+		CuentaBancaria bancaria= new CuentaBancaria();
+		bancaria.setNumero("111");
+		bancaria.setSaldo(new BigDecimal(600));
+		bancaria.setTipo("A");
 		
+		CuentaBancaria bancaria1= new CuentaBancaria();
+		bancaria1.setNumero("222");
+		bancaria1.setSaldo(new BigDecimal(100));
+		bancaria1.setTipo("B");
 		
+		bancariaService.insertar(bancaria1);
+		bancariaService.insertar(bancaria);
 	
+	
+		
+		iTransferenciaService.transferir("111", "222", new BigDecimal(10));
+		
+		System.out.println("Reporte: ");
+		List<Transferencia> transferencias  =iTransferenciaService.buscarTodos();
+		for (Transferencia transferencia : transferencias) {
+			System.out.println(transferencia);
+		}
 		
 		
 			}
