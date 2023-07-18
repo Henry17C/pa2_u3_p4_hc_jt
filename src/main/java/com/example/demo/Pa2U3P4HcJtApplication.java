@@ -10,20 +10,28 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.hotel.repository.modelo.CuentaBancaria;
+import com.example.demo.hotel.repository.modelo.Estudiante;
 import com.example.demo.hotel.repository.modelo.Habitacion;
 import com.example.demo.hotel.repository.modelo.Hotel;
+import com.example.demo.hotel.repository.modelo.Materia;
 import com.example.demo.hotel.repository.modelo.Transferencia;
 import com.example.demo.hotel.service.ICuentaBancariaService;
+import com.example.demo.hotel.service.IEstudianteService;
 import com.example.demo.hotel.service.IHotelService;
+import com.example.demo.hotel.service.IMateriaService;
+import com.example.demo.hotel.service.IMatriculaService;
 import com.example.demo.hotel.service.ITransferenciaService;
 
 @SpringBootApplication
 public class Pa2U3P4HcJtApplication implements CommandLineRunner {
 
 @Autowired
-private ITransferenciaService iTransferenciaService;
+private IEstudianteService estudianteService;
 @Autowired
-private ICuentaBancariaService bancariaService;
+private IMateriaService iMateriaService;
+@Autowired
+private IMatriculaService iMatriculaService;
+
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U3P4HcJtApplication.class, args);
@@ -32,82 +40,61 @@ private ICuentaBancariaService bancariaService;
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-	/*
-		System.err.println("---INNER JOIN----");
-		List<Hotel> hoteles= hotelService.buscarInnerJoin();
+
+/*
+		Estudiante estudiante= new Estudiante();
 		
-		for (Hotel hotel : hoteles) {
-			System.out.println(hotel.getNombre());
-			System.out.println("Tiene las siguiente habitaciones");
-			
-			for (Habitacion ha : hotel.getHabitaciones()) {
-				System.out.println(ha.getNumero());
-				
-			}
-			
-		}
+		estudiante.setApellido("Freire");
+		estudiante.setCedula("12345");
+		estudiante.setNombre("Fernado");
+		
+		estudianteService.ingresar(estudiante);
 		
 		
+		Materia materia= new Materia();
+		materia.setCodigo("H1");
+		materia.setNombre("Historia del arte");
+		materia.setNumeroCreditos(5);
 		
-		System.err.println("---SQl Join Fetch ---  ");
-		List<Hotel> hoteles1= 	hotelService.buscarJoinFetch();
+		Materia materia1= new Materia();
+		materia1.setCodigo("M1");
+		materia1.setNombre("Matematicas");
+		materia1.setNumeroCreditos(5);
 		
-		for (Hotel hotel : hoteles1) {
-			System.out.println(hotel.getNombre());
-			System.out.println("Tiene las siguiente habitaciones");
-			
-			for (Habitacion ha : hotel.getHabitaciones()) {
-				System.out.println(ha.getNumero());
-				
-			}
-			
-		}
+		Materia materia2= new Materia();
+		materia2.setCodigo("F1");
+		materia2.setNombre("Fisica");
+		materia2.setNumeroCreditos(5);
+	
+		iMateriaService.ingresar(materia);
+		iMateriaService.ingresar(materia1);
+		iMateriaService.ingresar(materia2);
 		
-		
-		
-		
-		Hotel hotel= new Hotel();
-		Habitacion habitacion= new Habitacion();
-		
-		
-		
-		
-		
-		List<Habitacion> habitaciones=new ArrayList<>();
-		habitaciones.add(habitacion);
-		habitacion.setNumero("MX1");
-		habitacion.setValor(new BigDecimal(200));
-		
-		
-		hotel.setDireccion("AV.123");
-		hotel.setNombre("Mexico");
-		hotel.setHabitaciones(habitaciones);
-		
-		hotelService.guardar(hotel);
 		
 		*/
-		CuentaBancaria bancaria= new CuentaBancaria();
-		bancaria.setNumero("111");
-		bancaria.setSaldo(new BigDecimal(600));
-		bancaria.setTipo("A");
 		
-		CuentaBancaria bancaria1= new CuentaBancaria();
-		bancaria1.setNumero("222");
-		bancaria1.setSaldo(new BigDecimal(100));
-		bancaria1.setTipo("B");
+		List<String> codigos= new ArrayList<>();
+		codigos.add("H1");
+		codigos.add("M1");
 		
-		bancariaService.insertar(bancaria1);
-		bancariaService.insertar(bancaria);
-	
-	
+		codigos.add("F1");
 		
-		iTransferenciaService.transferir("111", "222", new BigDecimal(10));
 		
-		System.out.println("Reporte: ");
-		List<Transferencia> transferencias  =iTransferenciaService.buscarTodos();
-		for (Transferencia transferencia : transferencias) {
-			System.out.println(transferencia);
-		}
+		//Estudiante estudiante= this.estudianteService.buscarPorCedula("12345");
+		//System.err.println(estudiante);
+		
+		
+		//System.err.println(iMateriaService.buscarPorCodigo("H1"));
+		
+		iMatriculaService.matricular("12345", codigos);
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 			}
