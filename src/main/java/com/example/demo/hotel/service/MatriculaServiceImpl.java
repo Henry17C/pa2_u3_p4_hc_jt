@@ -49,24 +49,24 @@ public class MatriculaServiceImpl implements IMatriculaService{
 		
 		
 		Estudiante  estudiante= estudianteService.buscarPorCedula(cedula);
-		Matricula matricula= new Matricula();
 		
-		for (String string : codigoLST) {
-			System.out.println(string);
-		}
+		
+	
 		
 		for (String codigo : codigoLST) {
+			Matricula matricula= new Matricula();
 			Materia materia= this.iMateriaService.buscarPorCodigo(codigo);
-			
+			System.err.println(materia);
 			matricula.setFechaDeMatricula(LocalDateTime.now());
 			matricula.setMateria(materia);
 			matricula.setValorUnitario(new BigDecimal(10));
 			matricula.setEstudiante(estudiante);
 			matricula.setNumeroDeMatricula(1);
-			
+		
 			
 			
 			this.ingresar(matricula);
+			System.out.println("MATRICULA EXITOSA");
 		}
 		
 		

@@ -34,13 +34,11 @@ public class Matricula {
 	@Column(name = "mtla_valor_unitario")
 	private BigDecimal valorUnitario;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	// el ultimo nombre defino en la clase se define en la clase Alumno
+	@ManyToOne()
 	@JoinColumn(name = "mtla_id_alumno")
 	private Estudiante estudiante;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	// el ultimo nombre defino en la clase se define en la clase Materia
+	@ManyToOne()
 	@JoinColumn(name = "mtla_id_materia")
 	private Materia materia;
 

@@ -14,7 +14,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
-@Table(name = "materia", schema = "public")
+@Table(name = "materia")
 @Entity
 public class Materia {
 
@@ -33,7 +33,7 @@ public class Materia {
 	@Column(name = "mate_codigo")
 	private String codigo;
 	
-	@OneToMany(mappedBy = "materia", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "materia")
 	private List<Matricula> matriculas;
 
 	@ManyToOne
@@ -68,14 +68,17 @@ public class Materia {
 	}
 
 	//get and set
-	@Override
-	public String toString() {
-		return "Materia [id=" + id + ", nombre=" + nombre + ", matriculas=" + matriculas + "]";
-	}
+	
 
 	//get and set
 	public Integer getId() {
 		return id;
+	}
+
+	@Override
+	public String toString() {
+		return "Materia [id=" + id + ", nombre=" + nombre + ", numeroCreditos=" + numeroCreditos + ", codigo=" + codigo
+				+ "]";
 	}
 
 	public void setId(Integer id) {

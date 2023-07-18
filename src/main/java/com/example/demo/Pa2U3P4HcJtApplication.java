@@ -41,50 +41,17 @@ private IMatriculaService iMatriculaService;
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-/*
-		Estudiante estudiante= new Estudiante();
-		
-		estudiante.setApellido("Freire");
-		estudiante.setCedula("12345");
-		estudiante.setNombre("Fernado");
-		
-		estudianteService.ingresar(estudiante);
-		
-		
-		Materia materia= new Materia();
-		materia.setCodigo("H1");
-		materia.setNombre("Historia del arte");
-		materia.setNumeroCreditos(5);
-		
-		Materia materia1= new Materia();
-		materia1.setCodigo("M1");
-		materia1.setNombre("Matematicas");
-		materia1.setNumeroCreditos(5);
-		
-		Materia materia2= new Materia();
-		materia2.setCodigo("F1");
-		materia2.setNombre("Fisica");
-		materia2.setNumeroCreditos(5);
 	
-		iMateriaService.ingresar(materia);
-		iMateriaService.ingresar(materia1);
-		iMateriaService.ingresar(materia2);
 		
 		
-		*/
+		
 		
 		List<String> codigos= new ArrayList<>();
 		codigos.add("H1");
 		codigos.add("M1");
-		
 		codigos.add("F1");
 		
 		
-		//Estudiante estudiante= this.estudianteService.buscarPorCedula("12345");
-		//System.err.println(estudiante);
-		
-		
-		//System.err.println(iMateriaService.buscarPorCodigo("H1"));
 		
 		iMatriculaService.matricular("12345", codigos);
 		
