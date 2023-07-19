@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ import com.example.demo.hotel.repository.modelo.Estudiante;
 import com.example.demo.hotel.repository.modelo.Habitacion;
 import com.example.demo.hotel.repository.modelo.Hotel;
 import com.example.demo.hotel.repository.modelo.Materia;
+import com.example.demo.hotel.repository.modelo.Provincia;
+import com.example.demo.hotel.repository.modelo.Semestre;
 import com.example.demo.hotel.repository.modelo.Transferencia;
 import com.example.demo.hotel.service.ICuentaBancariaService;
 import com.example.demo.hotel.service.IEstudianteService;
@@ -42,18 +45,47 @@ private IMatriculaService iMatriculaService;
 		// TODO Auto-generated method stub
 
 	
+		Provincia provincia= new Provincia();
+		provincia.setCantidadHabitantes(200.0);
+		provincia.setNombre("pichincha");
+		provincia.setSalarioPromedio(new BigDecimal(1000));
 		
+		
+		Estudiante estudiante= new Estudiante();
+		estudiante.setApellido("Lopez");
+		estudiante.setCedula("555");
+		estudiante.setNombre("Martin");
+		estudiante.setProvincia(provincia);
+		
+	
+		
+		Semestre semestre= new Semestre();
+		semestre.setFechaFin(LocalDateTime.now());
+		semestre.setFechaInicio(LocalDateTime.now());
+		semestre.setNivel(4);
+		
+		Materia materia= new Materia();
+		materia.setCodigo("C1");
+		materia.setNombre("Calculo");
+		materia.setNumeroCreditos(30);
+		materia.setSemestre(semestre);
+		
+		//iMateriaService.ingresar(materia);
+		
+		
+
+		
+		//estudianteService.ingresar(estudiante);
 		
 		
 		
 		List<String> codigos= new ArrayList<>();
-		codigos.add("H1");
-		codigos.add("M1");
-		codigos.add("F1");
+		codigos.add("C1");
 		
 		
 		
-		iMatriculaService.matricular("12345", codigos);
+		
+		iMatriculaService.matricular("555", codigos);
 		
 		
 		

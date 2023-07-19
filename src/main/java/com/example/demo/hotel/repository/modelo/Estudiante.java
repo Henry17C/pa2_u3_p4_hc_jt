@@ -36,7 +36,7 @@ public class Estudiante {
 	private String cedula;
 	
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "prov_id_estu")
 	private Provincia provincia;
 	

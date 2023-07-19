@@ -2,6 +2,7 @@ package com.example.demo.hotel.repository.modelo;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -36,7 +37,7 @@ public class Materia {
 	@OneToMany(mappedBy = "materia")
 	private List<Matricula> matriculas;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name ="smst_id_materia")
 	private Semestre semestre;
 	
