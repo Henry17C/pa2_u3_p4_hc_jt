@@ -13,5 +13,7 @@ public void insertar(CuentaBancaria cuentaBancaria);
 	public CuentaBancaria buscarPorNumero(String numCuenta);
 	
 	
+	public void prueba();
+	
 
 }
