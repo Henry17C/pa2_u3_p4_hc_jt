@@ -29,7 +29,9 @@ public class CuentaBancariaRepoImpl implements ICuentaBancariaRepo{
 		entityManager.persist(cuentaBancaria);
 	}
 
+	
 	@Override
+	@Transactional(value =  TxType.REQUIRED)
 	public void actualizar(CuentaBancaria bancaria) {
 		// TODO Auto-generated method stub
 		entityManager.merge(bancaria);

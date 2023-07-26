@@ -35,6 +35,7 @@ public class CuentaBancariaServiceImpl implements ICuentaBancariaService  {
 	}
 
 	@Override
+	
 	public void actualizar(CuentaBancaria bancaria) {
 		bancariaRepo.actualizar(bancaria);
 	}

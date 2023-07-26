@@ -41,6 +41,8 @@ private IMatriculaService iMatriculaService;
 @Autowired
 private ICuentaBancariaService bancariaService;
 	
+@Autowired
+private ITransferenciaService iTransferenciaService;
 
 
 	public static void main(String[] args) {
@@ -54,67 +56,24 @@ private ICuentaBancariaService bancariaService;
 	
 		
 		
-		CuentaBancaria bancaria= new CuentaBancaria();
-		bancaria.setNumero("420");
-		bancaria.setSaldo(new BigDecimal(50));
-		bancaria.setTipo("H");
+		CuentaBancaria bancariaO= new CuentaBancaria();
+		bancariaO.setNumero("A");
+		bancariaO.setSaldo(new BigDecimal(60));
+		bancariaO.setTipo("H");
 		
 		
-		System.out.println("Main: "+TransactionSynchronizationManager.isActualTransactionActive());//me dice si hay alguna transaccion activa
-		this.bancariaService.insertar(bancaria);
-		
-		//iPruebaService.pueba();
-		
-		
-		
-		
-		/*
-		Provincia provincia= new Provincia();
-		provincia.setCantidadHabitantes(200.0);
-		provincia.setNombre("pichincha");
-		provincia.setSalarioPromedio(new BigDecimal(1000));
-		
-		
-		Estudiante estudiante= new Estudiante();
-		estudiante.setApellido("Lopez");
-		estudiante.setCedula("555");
-		estudiante.setNombre("Martin");
-		estudiante.setProvincia(provincia);
-		
-	
-		
-		Semestre semestre= new Semestre();
-		semestre.setFechaFin(LocalDateTime.now());
-		semestre.setFechaInicio(LocalDateTime.now());
-		semestre.setNivel(4);
-		
-		Materia materia= new Materia();
-		materia.setCodigo("C1");
-		materia.setNombre("Calculo");
-		materia.setNumeroCreditos(30);
-		materia.setSemestre(semestre);
-		
-		//iMateriaService.ingresar(materia);
-		
+		CuentaBancaria bancariaD= new CuentaBancaria();
+		bancariaD.setNumero("B");
+		bancariaD.setSaldo(new BigDecimal(50));
+		bancariaD.setTipo("C");
 		
 
+		//bancariaService.insertar(bancariaD);
+		//bancariaService.insertar(bancariaO);
 		
-		//estudianteService.ingresar(estudiante);
+		iTransferenciaService.transferir("A", "B", new BigDecimal(10));
 		
-		
-		
-		List<String> codigos= new ArrayList<>();
-		codigos.add("C1");
-		
-		
-		
-		
-		iMatriculaService.matricular("555", codigos);
-		
-		
-		
-		
-		*/
+
 		
 		
 		
