@@ -21,14 +21,17 @@ public class TranferenciaRepositoryImpl implements ITrasferenciaRepository{
 	@PersistenceContext 
 	private EntityManager entityManager;
 	@Override
-	@Transactional(value =  TxType.REQUIRED)
+	@Transactional(value =  TxType.MANDATORY)
 	public void insertar(Transferencia transferencia) {
 		// TODO Auto-generated method stub
 		entityManager.persist(transferencia);
 		//throw new RuntimeException();
 
 	}
+	//Mandatory -> insertar, actualizar, eliminar
+	//Not supported -> seleccionar, realizar trnasferencia
 	@Override
+	@Transactional(value =  TxType.NOT_SUPPORTED)
 	public List<Transferencia> seleccionarTodos() {
 		// TODO Auto-generated method stub
 		TypedQuery<Transferencia> query= this.entityManager.createQuery("select t from Transferencia t", Transferencia.class);
