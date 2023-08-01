@@ -149,8 +149,7 @@ public class Main {
 	        LOG.info("Funtion Lambda2 : " + function2.apply(10));
 
 	        
-	        
-	        
+	       
 	        
 	        
 	        //Unary
@@ -162,6 +161,15 @@ public class Main {
 	        
 	        IPersonaUnaryOperatorFunction<Integer>  unary2= numero-> numero+(numero*2);
 	        LOG.info("unary Function Lambda1  : " + unary2.apply(10));
+	        //Unary autoreferenciado
+	        
+	        IPersonaFunction<String, Integer > funcion3= metodos::retorna;
+	        LOG.info("FUNCTION AUTOREFERENCIADO: " +funcion3.apply(8));
+	        
+	        IPersonaUnaryOperator<Integer> unary3= metodos::apply1;
+	        LOG.info("UNARY AUTOREFERENCIADO : " + unary3.apply(5));
+
+	        
 	        
 	        
 	}}

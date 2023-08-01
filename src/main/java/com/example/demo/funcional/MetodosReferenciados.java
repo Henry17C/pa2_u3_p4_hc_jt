@@ -31,6 +31,15 @@ public class MetodosReferenciados {
 		
 	}
 	
+	public String retorna(Integer arg) {
+		String valor=arg.toString();
+		return " El numero ingresado es:" +valor;
+	}
+	
+	public Integer apply1(Integer arg) {
+		
+		return arg=arg*arg; 
+	}
 	
 	
 	
