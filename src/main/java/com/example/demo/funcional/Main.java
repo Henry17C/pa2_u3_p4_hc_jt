@@ -1,5 +1,10 @@
 package com.example.demo.funcional;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,7 +41,7 @@ public class Main {
 			
 			   MetodosReferenciados metodos= new MetodosReferenciados();
 		
-			   IPersonaSupplier<Integer> supplier4= metodos::getId;  //metodos referenacidos
+			   IPersonaSupplier<Integer> supplier4= MetodosReferenciados::getId;  //metodos referenacidos
 				LOG.info("SUPPLIER Metodo referenciado:"+ supplier4.getId());
 
 			
@@ -60,7 +65,7 @@ public class Main {
 	        
 	        
 	        //metodo referenciado
-	        IPersonaConsumer<String> consumer3= metodos::aceptar;
+	        IPersonaConsumer<String> consumer3= MetodosReferenciados::aceptar;
 	        LOG.info("Metodo Autoreferenciado: ");
 	        consumer3.accept("NNNNN");
 			
@@ -170,7 +175,78 @@ public class Main {
 	        LOG.info("UNARY AUTOREFERENCIADO : " + unary3.apply(5));
 
 	        
+	        /*METODOS HIGHT ORDEr*/
+
+	        //SUPPIER
+	        MetodosHighOrder highOrder= new MetodosHighOrder();
 	        
+	        //1 clase
+			IPersonaSupplier< String> supplierHO= new PersonaSupplierImpl();
+	        highOrder.metodo(supplierHO);
+	        //2 lambda
+	        
+	        highOrder.metodo(()-> "1234 HO");
+	        //3 referenciados
+	        
+	        highOrder.metodo(MetodosReferenciados::getIdHO);
+	        
+	        //CONSUMER
+	        
+	        //1 clase
+	        highOrder.metodoConsumer(new PersonaCosummerImpl(), "consumer clase");
+
+	        //2 lamdas
+	        highOrder.metodoConsumer(cadena->LOG.info(cadena), "consumer lamdas");
+
+	        //referenciado
+	        highOrder.metodoConsumer(MetodosReferenciados::aceptar,"Consumer referenciado ");
+
+	        
+	       
+	        
+	        //interfaces funcionales JAVA
+	        ///1. Supplier
+	          Stream <String> lista=  Stream.generate(()-> "1236465465").limit(10);
+	          lista.forEach(cadena-> LOG.info(cadena));
+	        //2. Consumer
+	          
+	          List<Integer> listaNumeros= Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12,13);
+	          
+	          listaNumeros.forEach(cadena ->{
+	        	  LOG.info(""+cadena);
+	          });
+	          
+	          //3 predicate
+	          
+	          Stream<Integer> listaFinal =listaNumeros.stream().filter(numero ->numero>=5);
+	          
+	          listaFinal.forEach(numero-> LOG.info("Valor mayor: " +numero));
+	        
+	          
+	          //4. function
+	          Stream<String> listaCambiada=  listaNumeros.stream().map((numero-> 
+	          {
+	        	  Integer num=10;
+	        	  num=numero+num;
+	        	  return "N:"+numero;
+	          }
+	        		  ));
+	          
+	          listaCambiada.forEach(cadena-> LOG.info(cadena));
+	          
+	          //5. Unary operator
+	          
+	          Stream<Integer> listaCambiada2=  listaNumeros.stream().map((numero-> 
+	          {
+	        	  Integer num=10;
+	        	  num=numero+num;
+	        	  return num;
+	          }
+	        		  ));
+	          
+	          listaCambiada2.forEach(cadena-> LOG.info(cadena.toString()));
+	          
+	          
 	        
 	}}
 	   

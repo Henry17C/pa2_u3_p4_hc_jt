@@ -8,14 +8,14 @@ public class MetodosReferenciados {
 	
 	private static final Logger LOG= LoggerFactory.getLogger(Main.class);
 
-	public Integer getId() {
+	public  static Integer getId() {
 		
 		return 8;
 	}
 	
 	
 	
-	public void aceptar(String arg) {
+	public static void aceptar(String arg) {
 		
 		String cadena="henry" ;
 		
@@ -40,6 +40,16 @@ public class MetodosReferenciados {
 		
 		return arg=arg*arg; 
 	}
+	
+	
+	public static String getIdHO() {
+		
+		String cadena= "Henry"; 
+		
+	
+		return "SUPPIER REferenciado"+ cadena;
+	}
+	
 	
 	
 	
