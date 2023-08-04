@@ -247,7 +247,45 @@ public class Main {
 	          listaCambiada2.forEach(cadena-> LOG.info(cadena.toString()));
 	          
 	          
-	        
+	          
+	          //METODO HIGHT ORDER JAVA
+	          List <Integer> numeros= Arrays.asList(1,2,3,4,78);
+	          
+	        ///1. Supplier
+	          System.out.println("SUPPLIER");
+	          
+	          Stream <String> listaF1=  Stream.generate(MetodosReferenciados::supplierRefDeber).limit(5);
+	          listaF1.forEach(cadena-> LOG.info(cadena));
+	          
+	          
+	          
+	        //2. Consumer
+	          System.out.println("CONSUMER");
+	          numeros.forEach(MetodosReferenciados::consummerRefDeber);
+	          
+	          
+	          //3 predicate
+	          System.out.println("PREDICATE");
+	          Stream<Integer> listaF= numeros.stream().filter(MetodosReferenciados::predicateRefDeber);
+	          listaF.forEach(num-> LOG.info(num.toString()));
+	          
+	          
+	          
+	        //4. function
+	          System.out.println("FUNCTION");
+
+	          Stream<String> listaF2= numeros.stream().map(MetodosReferenciados::functionRefDeber);
+	          listaF2.forEach(cadena-> LOG.info(cadena.toString()));
+	          
+	          
+	          //5. UNARYOPERATOR
+	          
+	          Stream<Integer> listaF3= numeros.stream().map(MetodosReferenciados::unaryOperatorRefDeber);
+	          listaF3.forEach(num-> LOG.info(num.toString()));
+	          
+	          
+	          
+	          
 	}}
 	   
 

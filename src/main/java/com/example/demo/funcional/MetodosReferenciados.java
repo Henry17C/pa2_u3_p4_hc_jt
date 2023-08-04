@@ -50,8 +50,34 @@ public class MetodosReferenciados {
 		return "SUPPIER REferenciado"+ cadena;
 	}
 	
+	public static void consummerRefDeber(Integer numero) {
+		
+		
+		LOG.info("El numero es: "+numero);
+	}
 	
 	
+	public static  String supplierRefDeber() {
+		return "Este es un mensaje";
+	}
 	
 	
+	public static boolean predicateRefDeber (Integer num) {
+		
+		
+		return num>10;
+	}
+	
+	
+	public static String functionRefDeber(Integer num) {
+		
+		
+		return "ahora es una cadena"+ num.toString();
+	}
+	
+	
+	public static Integer unaryOperatorRefDeber(Integer num) {
+		
+		return num*num;
+	}
 }
