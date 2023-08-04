@@ -175,7 +175,7 @@ public class Main {
 	        LOG.info("UNARY AUTOREFERENCIADO : " + unary3.apply(5));
 
 	        
-	        /*METODOS HIGHT ORDEr*/
+	        /*METODOS HIGHT ORDER*/
 
 	        //SUPPIER
 	        MetodosHighOrder highOrder= new MetodosHighOrder();
@@ -201,6 +201,24 @@ public class Main {
 	        //referenciado
 	        highOrder.metodoConsumer(MetodosReferenciados::aceptar,"Consumer referenciado ");
 
+	        //PREDICATE
+	        
+	        
+	        LOG.info("PREDICATE HO DEBER: "+highOrder.metodoPredicate(MetodosReferenciados::predicateRefDeber, 15));
+	        //FUNTION
+	        
+	        LOG.info("FUNTION HO DEBER: "+highOrder.metodoFuntion(MetodosReferenciados::functionRefDeber, 5));
+	        //UNARY OPERATOR
+	        
+	        LOG.info("UNARY OPERATOR HO DEBER: "+highOrder.metodoUnary(MetodosReferenciados::unaryOperatorRefDeber, 5));
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
 	        
 	       
 	        
@@ -279,7 +297,7 @@ public class Main {
 	          
 	          
 	          //5. UNARYOPERATOR
-	          
+	          System.out.println("UNARYOPERATOR");
 	          Stream<Integer> listaF3= numeros.stream().map(MetodosReferenciados::unaryOperatorRefDeber);
 	          listaF3.forEach(num-> LOG.info(num.toString()));
 	          

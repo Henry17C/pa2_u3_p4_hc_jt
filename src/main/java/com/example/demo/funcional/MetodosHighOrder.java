@@ -29,6 +29,25 @@ public static void metodoConsumer(IPersonaConsumer<String> funcion, String caden
 
 
 
+public static Boolean metodoPredicate(IPersonaPredicate<Integer> funcion,Integer num) {
+	
+	return funcion.evaluar(num);
+	
+}
+
+
+public static String metodoFuntion(IPersonaFunction<String, Integer> funcion,Integer num) {
+	
+	return funcion.apply(num);
+	
+}
+
+public static Integer metodoUnary(IPersonaUnaryOperator< Integer> funcion,Integer num) {
+	
+	return funcion.apply(num);
+	
+}
+
 
 
 
