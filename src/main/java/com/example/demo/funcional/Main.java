@@ -247,6 +247,14 @@ public class Main {
 	          listaCambiada2.forEach(cadena-> LOG.info(cadena.toString()));
 	          
 	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          
 	        
 	}}
 	   
